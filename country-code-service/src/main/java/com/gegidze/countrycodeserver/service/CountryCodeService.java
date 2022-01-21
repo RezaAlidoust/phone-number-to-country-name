@@ -14,7 +14,6 @@ public class CountryCodeService {
     }
 
     public String get(String phoneNumber) {
-        repository.get(convertIntToDigitArray(Long.parseLong(phoneNumber)));
-        return phoneNumber;
+        return repository.get(convertIntToDigitArray(Long.parseLong(phoneNumber)));
     }
 }
