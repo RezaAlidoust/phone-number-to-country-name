@@ -7,7 +7,7 @@ public class Node {
     private String country;
 
     public Node() {
-        children = new HashMap<Long, Node>(10, 1);
+        children = new HashMap<>(10, 1);
     }
 
     public void addChild(Long key, Node node) {
