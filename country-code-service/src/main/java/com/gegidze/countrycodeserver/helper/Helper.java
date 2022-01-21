@@ -6,8 +6,8 @@ import static java.util.Collections.reverse;
 
 public class Helper {
 
-    public static ArrayList<Integer> convertIntToDigitArray(int num) {
-        ArrayList<Integer> array = new ArrayList<>();
+    public static ArrayList<Long> convertIntToDigitArray(long num) {
+        ArrayList<Long> array = new ArrayList<>();
         do {
             array.add(num % 10);
             num /= 10;

@@ -20,8 +20,16 @@ public class CountryCodesRepositoryImpl implements CountryCodesRepository {
     }
 
     @Override
-    public String get(int phoneNumber) {
-        return "node.get(key)";
+    public String get(ArrayList<Long> path) {
+        Node parent = this.node;
+        String lastCountryName = null;
+        for (Long key : path) {
+            if (parent.getChildren().get(key) != null) {
+                parent = parent.getChildren().get(key);
+                lastCountryName = parent.getCountry() != null ? parent.getCountry() : lastCountryName;
+            } else break;
+        }
+        return lastCountryName;
     }
 
     @Override
@@ -32,7 +40,7 @@ public class CountryCodesRepositoryImpl implements CountryCodesRepository {
     }
 
     @Override
-    public Node insertWithPath(Node parent, ArrayList<Integer> path, String value) {
+    public Node insertWithPath(Node parent, ArrayList<Long> path, String value) {
         Node current;
         if (parent.getChildren().get(path.get(0)) != null)
             current = parent.getChildren().get(path.get(0));

@@ -3,18 +3,18 @@ package com.gegidze.countrycodeserver.entity;
 import java.util.HashMap;
 
 public class Node {
-    private HashMap<Integer, Node> children;
+    private HashMap<Long, Node> children;
     private String country;
 
     public Node() {
-        children = new HashMap<>(10, 1);
+        children = new HashMap<Long, Node>(10, 1);
     }
 
-    public void addChild(int key, Node node) {
+    public void addChild(Long key, Node node) {
         this.children.put(key, node);
     }
 
-    public HashMap<Integer, Node> getChildren() {
+    public HashMap<Long, Node> getChildren() {
         return children;
     }
 
