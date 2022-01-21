@@ -14,6 +14,7 @@ public class CountryCodeController implements CountryCodeApi {
     }
 
     @Override
+    // like phoneNumber = 00123456789123
     public CountryCodeResponse get(String phoneNumber) {
         phoneNumber = phoneNumber.substring(2, 14);
         String countryName = countryCodeService.get(phoneNumber);
