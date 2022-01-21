@@ -17,6 +17,6 @@ public class CountryCodeController implements CountryCodeApi {
     public CountryCodeResponse get(String phoneNumber) {
         phoneNumber = phoneNumber.substring(2, 14);
         String countryName = countryCodeService.get(phoneNumber);
-        return null;
+        return new CountryCodeResponse(countryName);
     }
 }

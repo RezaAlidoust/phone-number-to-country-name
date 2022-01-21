@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class ErrorController extends ResponseEntityExceptionHandler {
-    
+
     @ExceptionHandler(ConstraintViolationException.class)
     public final ResponseEntity<Object> handleConstraintViolationException(
             ConstraintViolationException ex, WebRequest request) {
@@ -33,6 +33,19 @@ public class ErrorController extends ResponseEntityExceptionHandler {
                         request.getDescription(false)
                 ),
                 HttpStatus.UNPROCESSABLE_ENTITY
+        );
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public final ResponseEntity<Object> handleEntityNotFoundException(
+            NotFoundException ex, WebRequest request) {
+        return new ResponseEntity<>(
+                new ErrorResponseModel(
+                        ex.getMessage(),
+                        LocalDateTime.now(),
+                        request.getDescription(false)
+                ),
+                HttpStatus.NOT_FOUND
         );
     }
 }
